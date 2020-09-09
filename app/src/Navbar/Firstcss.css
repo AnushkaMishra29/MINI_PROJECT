@@ -1,0 +1,42 @@
+.header{
+    overflow: hidden;
+    padding: 20px 20px;
+    background-color: #262537;
+    width:100vw;
+    
+    
+} 
+*{overflow-x: hidden;}
+
+.header a {
+    float: left;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+    font-family: Montserrat;
+    font-size: 21px;
+    margin-left:40px ;
+    margin-right: 60px;
+    font-style: bold;
+}
+
+.header-right{
+    float: right;
+    text-decoration:none ;
+}
+.header-right a:hover{
+    background-color:#2C2A56;
+}
+@media screen and (max-width: 500px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .header-right {
+      float: none;
+    }
+}
+
+
