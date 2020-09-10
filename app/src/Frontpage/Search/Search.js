@@ -13,19 +13,42 @@ class Search extends Component{
                 </div>
                 <div className="row">
                     <div className="col-lg-3 col-6">
-                        <Item></Item>
+                        <Item 
+                          name="Govt School"
+                          class="School"
+                          para="
+                          Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes
+                          "
+                        image="/assets/school.png"></Item>
                     </div>
                     <div className="col-lg-3 col-6">
-                    <Item></Item>
-                        
+                    <Item 
+                      name="Ngo"
+                      class="Ngo"
+                     para="
+                     Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes
+                     "
+                    image="/assets/Ngo.png">
+                    </Item>
                     </div>
                     <div className="col-lg-3 col-6">
-                    <Item></Item>
-                        
+                    <Item image="/assets/Donate.png"
+                       name="Donate Here"
+                       class="Donate"
+                      para="
+                      Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes
+                      ">
+                    </Item>
                     </div>
                     <div className="col-lg-3 col-6">
-                    <Item></Item>
-                        
+                    <Item
+                     name="Announcements"
+                     class="Announcement"
+                     para="
+                     Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes
+                     "
+                     image="/assets/announcement.png">
+                    </Item>
                     </div>
                 </div>
             </div>

@@ -8,8 +8,8 @@ import Searches from './frontpage/Search/Search'
 function App() {
   return (
    <div>
-     {/* <Navbar></Navbar>
-     <Landing></Landing>     */}
+     <Navbar></Navbar>
+     <Landing></Landing>    
      <Searches></Searches> 
    </div>
   );
