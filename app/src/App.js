@@ -3,12 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './Navbar/Navbar'
 import Landing from './frontpage/Landing/landing'
+import Searches from './frontpage/Search/Search'
 
 function App() {
   return (
    <div>
-     <Navbar></Navbar>
-     <Landing></Landing>     
+     {/* <Navbar></Navbar>
+     <Landing></Landing>     */}
+     <Searches></Searches> 
    </div>
   );
 }

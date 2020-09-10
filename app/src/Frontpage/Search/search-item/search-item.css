@@ -1,0 +1,58 @@
+.center {
+    text-align: center;
+}
+
+.Container {
+    border: 1px solid #262537;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22) !important;
+    position: relative;
+    z-index: 1;
+    border-radius: 1%;
+}
+
+img {
+    width: 60%;
+}
+
+.para {
+    margin-top: 30px;
+    color: #262537;
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
+    font-size: 20px;
+}
+
+.search-item {
+    padding: 0px 10px;
+    margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .para {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .para {
+        font-size: 10px;
+    }
+
+    .search-item {
+
+        margin-bottom: 10px;
+    }
+}
+@media only screen and (max-width: 375px) {
+    .para {
+        font-size: 10px;
+    }
+
+    .search-item {
+
+        margin-bottom: 10px;
+        padding: 0px 5px;
+    }
+}
