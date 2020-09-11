@@ -2,8 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './Navbar/Navbar'
-import Landing from './frontpage/Landing/landing'
-import Searches from './frontpage/Search/Search'
+import Landing from './Frontpage/Landing/Landing'
+import Searches from './Frontpage/Search/Search'
 
 function App() {
   return (
