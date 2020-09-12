@@ -1,8 +1,7 @@
-.section{
+ .section{
     background: url(/assets/wall.png);
     background-repeat: no-repeat;
-    min-height: 100vh;
-    background-position:fixed;
+    height: 100vh !important;
     background-size:cover;
 
 }
@@ -27,4 +26,4 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     padding-top:50px;
-}
+} 
