@@ -1,0 +1,30 @@
+.section{
+    background: url(/assets/wall.png);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    background-position:fixed;
+    background-size:cover;
+
+}
+.bgrnd{
+    background: url(/assets/Rectangle.png);
+    min-height: 30vh;
+    background-position:fixed;
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.pic{
+    background: url(/assets/small.png);
+    float: right;
+    z-index: 1;
+    height: 80%;
+    width: 60%;
+
+}
+.txt{
+    color: #fff;
+    font-size:3vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    padding-top:50px;
+}

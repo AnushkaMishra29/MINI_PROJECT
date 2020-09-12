@@ -1,0 +1,23 @@
+.img{
+    background: url(/assets/children.png);
+    background-position:fixed;
+    background-size:cover;
+    background-repeat:no-repeat;
+    
+}
+.bg{
+    background:Url(/assets/bg.png);
+    min-height: 100vh;
+    background-position:fixed;
+    background-size:cover;
+    background-repeat:no-repeat;
+
+}
+.img-text{
+    color: #fff;
+    font-size:3vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    padding-top: 20%;
+    padding-left:100px ;
+}
