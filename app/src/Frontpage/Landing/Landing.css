@@ -1,9 +1,9 @@
-.img{
+.landing .img{
     background: url(/assets/children.png);
     background-position:fixed;
     background-size:cover;
     background-repeat:no-repeat;
-    
+   
 }
 .bg{
     background:Url(/assets/bg.png);
