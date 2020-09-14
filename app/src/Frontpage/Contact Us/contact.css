@@ -1,95 +1,62 @@
-.background{
-    background:Url(/assets/wall.png);
-    min-height: 100vh;
-    background-position:fixed;
-    background-size:cover;
-    background-repeat:no-repeat;
+.contact .padding
+{
+    padding: 50px 40vw;
 }
-.main{
-
-    text-align: center;
-    color: #262537;
-    font-size:3vw;
+.contact input{
+    background: transparent;
+    border: 3px solid #262537;
+    border-radius: 7%;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    padding-top:50px;
-    border-bottom: 3px solid #262537;
-}
-.Name{
-    padding-left: 150px;
-    padding-top: 40px;
-    
     color: #262537;
-    font-size:2vw;
+    padding-left:10px;
+    width:70%;
+    height:50px;
+    letter-spacing:4px;
+    font-weight:600;
+} 
+.contact label{
+    text-align:left !important;
+    color:#262537;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 22px;
     
 }
-.email{
-    padding-left: 150px;
-    padding-top: 40px;
+.contact .form-padding
+{
+    padding-left: 10vw; 
+}
+.contact textarea
+{
+    background: transparent;
+    border: 3px solid #262537;
+    border-radius: 7%;
     color: #262537;
-    font-size:2vw;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
-    
-}
-.query{
-    padding-left: 150px;
-    padding-top: 40px;
-    color: #262537;
-    font-size:2vw;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 200;
-}
-input{
-    width: 40%;
-    height: 60px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 2px solid #000;
-    border-radius: 8px;
-    background-color: #D9D7D7;
-    font-size: 16px;
-    resize: none;
-}
-textarea{
-    
-    width: 40%;
+    width:70%;
     height: 150px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 2px solid #000;
-    border-radius: 8px;
-    background-color: #D9D7D7;
-    font-size: 16px;
-    resize: none;
+    padding-left:10px;
+    letter-spacing:2px;
+    font-weight: 600;
+    
 }
-.submit{
-    padding-top: 50px;
-    padding-left: 550px;
+.contact .error
+{
+    color: red;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 5px;
+    font-weight: 600;
+    margin-bottom: 5px;
 }
-button{
-    background-color: #5B4444;
-    width: 25%;
-    height:80%;
+.contact .opacity
+{
+    opacity:0
 }
- textarea:focus{
-
-    border: 3px solid #555;
+.contact .invalid
+{
+    border:2px solid red;
 }
-input:focus{
-    border: 3px solid #555;
-}
-.one{
-    padding-left: 30px;
-    padding-bottom: 10px;
-}
-.two{
-    padding-left: 30px;
-    padding-bottom: 10px;
-}
-.three{
-    padding-left: 30px;
-    padding-bottom: 10px;
+.contact img 
+{
+    width: 60% !important;
 }

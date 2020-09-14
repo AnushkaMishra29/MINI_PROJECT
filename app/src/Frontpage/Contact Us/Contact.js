@@ -4,61 +4,185 @@ import './contact.css'
 
 
 class Contact extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            fullName: "",
-            email: "",
-            query: "",
-        };
+   
+    state={
+        orderForm:{
+            name:{
+                label:'Name',
+                elementType:'input',
+                elementConfig:{
+                    type:'text',
+                },
+                error:'Name is Required',
+                validation:{
+                  required:true,
+                  
+                },
+                valid:false,
+                value:'',
+                touched:false
+            },
+            email:{
+                label:'Email',
+                elementType:'input',
+                elementConfig:{
+                    type:'email',
+                },
+                error:' Valid Email is Required',
+                validation:{
+                  required:true,
+                  ajax:/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/
+                },
+                valid:false,
+                value:'',
+                touched:false
+            },
+            query:{
+                label:'Query',
+                elementType:'textarea',
+                elementConfig:{
+                    type:'text',
+                },
+                error:'Query of Min 100 Letter is Required',
+                validation:{
+                  required:true,
+                  minlength:100
+                  
+                },
+                valid:false,
+                value:'',
+                touched:false
+            },
+     } 
     }
-    
-  
+    Checkvalidation=(value,rules)=>
+    {
+         let isValid=true;
+         if(rules.required)
+         {
+           isValid=value.trim()!=='' && isValid ;
+         }
+         if(rules.ajax)
+         {
+            //  isValid== (rules.ajax.text(value)) && isValid; 
+            console.log(rules.ajax.test(value))
+            
+         }
+         if(rules.minlength)
+         {
+           isValid=value.trim().length>=rules.minlength && isValid;
+         }
+         return isValid
+    }
+    inputchangheHandler=(event,id)=>
+    {
+       const UpdatedForm={...this.state.orderForm};
+       const updatedElement={...this.state.orderForm[id]}
+       updatedElement.value=event.target.value;
+       updatedElement.valid=this.Checkvalidation(event.target.value,updatedElement.validation)
+       UpdatedForm[id]=updatedElement;
+       this.setState({orderForm:UpdatedForm})
+       
+    } 
+    touched=(id)=>
+   {
+    const UpdatedForm={...this.state.orderForm};
+    const updatedElement={...this.state.orderForm[id]}
+    updatedElement.touched=true;
+    UpdatedForm[id]=updatedElement;
+    console.log(UpdatedForm)
+    this.setState({orderForm:UpdatedForm})
+   }
+
     render(){
+        let Array=[];
+         for(let key in this.state.orderForm)
+         {
+            Array.push({id:key,config:this.state.orderForm[key]} )
+         }
         return(
-            <div className='background'>
-                <div className='contact'>
-                    <div className='main'>DROP A MAIL</div>
+            <div className='contact background'>
+               <div className="center font padding">
+                    <div className="underline">
+                     Drop a Mail
+                    </div>
                 </div>
-                <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
-                    <div className='Name'>
-                        
-                        <div className='one'>Name</div>
-                        <label htmlFor="Name"> </label>
-                        <input type='text' name='Name' value={this.state.name} onChange={this.onNameChange.bind(this)}/>
-                        
+                <div className="row">
+                    <div className="col-md-6">
+                       <div className="form-padding">
+                        <form>
+                            { 
+                            Array.map((element)=>
+                            { 
+                                if(element.config.elementType=='input')
+                                {
+                                    return(
+                                        <div key={element.id}>
+                                         <div>
+                                             <label>{element.config.label}</label>
+                                         </div>
+                                         <div>
+                                            <input
+                                             value={element.config.value} 
+                                              onClick={
+                                              ()=>this.touched(element.id)} 
+                                              onChange={
+                                              (event)=>this.inputchangheHandler(event,element.id)    
+                                              }
+                                              className={(!element.config.touched||element.config.valid)?null:"invalid"}
+                                              type={element.config.elementConfig.type}>
+                                            </input>
+                                         </div>
+                                          <div>
+                                          <span 
+                                          className={(!element.config.touched||element.config.valid)?"opacity":"error"}
+                                         >{element.config.error}
+                                         </span>
+                                          </div>
+                                         </div>
+                                    )
+                                }
+                                else{
+                                    return (
+                                    <div key={element.id}>
+                                        <div>
+                                             <label>{element.config.label}</label>
+                                         </div>
+                                         <div>
+                                             <textarea
+                                              value={element.config.value} 
+                                              onClick={
+                                              ()=>this.touched(element.id)} 
+                                              onChange={
+                                              (event)=>this.inputchangheHandler(event,element.id)    
+                                                }
+                                              className={(!element.config.touched||element.config.valid)?null:"invalid"}
+                                              type={element.config.elementConfig.type}></textarea>
+                                         </div>
+                                          <div>
+                                         <span 
+                                          className={(!element.config.touched||element.config.valid)?"opacity":"error"}
+                                         >{element.config.error}
+                                         </span>
+                                          </div>
+                                    </div>
+                                    )
+                                }
+                              }
+                             )
+                            } 
+                            
+                        </form>
+                       </div>
                     </div>
-                    <div className='email'>
-                      
-                        <div className='two'>Email</div>
-                        <label htmlFor="email"></label>
-                        <input type='email' name='email' value={this.state.email} onChange={this.onEmailChange.bind(this)}/>
-                        
+                    <div class ="col-md-6 center">
+                        <img src='/assets/email.png'></img>
                     </div>
-                    <div className='query'>
-                        <div className='three'>Query</div>
-                        <label htmlFor="text"></label>
-                        <textarea name='query' maxLength='250' value={this.state.query} onChange={this.onQueryChange.bind(this)}  ></textarea>
-                        
-                    </div>
-                    <div className='submit'>
-                    <button type='submit'>Submit</button>
-                    </div>
-                </form>
+                </div>
 
             </div>
         )
     }
-    onNameChange(event) {
-      this.setState({name: event.target.value})
-    }
-    onEmailChange(event) {
-      this.setState({email: event.target.value})
-    }
-    onQueryChange(event) {
-      this.setState({query: event.target.value})
-    }
-    handleSubmit(event) {
-    }
+    
 }
 export default Contact;
