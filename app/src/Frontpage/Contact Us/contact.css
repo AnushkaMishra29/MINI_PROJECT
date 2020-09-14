@@ -1,0 +1,95 @@
+.background{
+    background:Url(/assets/wall.png);
+    min-height: 100vh;
+    background-position:fixed;
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.main{
+
+    text-align: center;
+    color: #262537;
+    font-size:3vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    padding-top:50px;
+    border-bottom: 3px solid #262537;
+}
+.Name{
+    padding-left: 150px;
+    padding-top: 40px;
+    
+    color: #262537;
+    font-size:2vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    
+}
+.email{
+    padding-left: 150px;
+    padding-top: 40px;
+    color: #262537;
+    font-size:2vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    
+}
+.query{
+    padding-left: 150px;
+    padding-top: 40px;
+    color: #262537;
+    font-size:2vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+}
+input{
+    width: 40%;
+    height: 60px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #000;
+    border-radius: 8px;
+    background-color: #D9D7D7;
+    font-size: 16px;
+    resize: none;
+}
+textarea{
+    
+    width: 40%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #000;
+    border-radius: 8px;
+    background-color: #D9D7D7;
+    font-size: 16px;
+    resize: none;
+}
+.submit{
+    padding-top: 50px;
+    padding-left: 550px;
+}
+button{
+    background-color: #5B4444;
+    width: 25%;
+    height:80%;
+}
+ textarea:focus{
+
+    border: 3px solid #555;
+}
+input:focus{
+    border: 3px solid #555;
+}
+.one{
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+.two{
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+.three{
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
