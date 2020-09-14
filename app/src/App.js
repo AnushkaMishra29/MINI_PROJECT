@@ -17,7 +17,7 @@ function App() {
      <Searches></Searches> 
      <Wedo></Wedo>
      <Contact></Contact>
-   </div>
+     </div>
   );
 }
 

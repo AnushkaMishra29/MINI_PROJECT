@@ -1,9 +1,9 @@
-.img{
+.landing .img{
     background: url(/assets/children.png);
     background-position:fixed;
     background-size:cover;
     background-repeat:no-repeat;
-    
+   
 }
 .bg{
     background:Url(/assets/bg.png);
@@ -20,8 +20,6 @@
     padding-top: 20%;
     padding-left:100px ;
 }
-
-
 @media only screen and (max-width: 768px) {
     
     .img-text{
@@ -32,3 +30,5 @@
         margin-bottom: 0px;
     }
 }
+
+

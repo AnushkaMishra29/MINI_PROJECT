@@ -5,7 +5,7 @@
 .contact input{
     background: transparent;
     border: 3px solid #262537;
-    border-radius: 7%;
+    border-radius: 3%;
     font-family: 'Montserrat', sans-serif;
     color: #262537;
     padding-left:10px;
@@ -13,6 +13,7 @@
     height:50px;
     letter-spacing:4px;
     font-weight:600;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 } 
 .contact label{
     text-align:left !important;
@@ -31,13 +32,14 @@
 {
     background: transparent;
     border: 3px solid #262537;
-    border-radius: 7%;
+    border-radius: 3%;
     color: #262537;
     width:70%;
     height: 150px;
     padding-left:10px;
     letter-spacing:2px;
     font-weight: 600;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     
 }
 .contact .error

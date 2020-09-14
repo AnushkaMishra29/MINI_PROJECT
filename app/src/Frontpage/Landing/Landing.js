@@ -3,6 +3,7 @@ import './Landing.css';
 class Landing extends React.Component{
     render(){
         return(
+            <div className="landing">
             <div className='img'>
                 <div className='bg'>
                     <div className='img-text'>
@@ -11,6 +12,7 @@ class Landing extends React.Component{
                         <p>transforming the lives...</p>
                     </div>
                 </div>
+            </div>
             </div>
         )
     }
