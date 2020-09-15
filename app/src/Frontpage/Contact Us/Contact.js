@@ -1,6 +1,6 @@
 import React  from 'react'
 import './contact.css'
-
+import axios from 'axios'
 
 
 class Contact extends React.Component{
@@ -37,6 +37,7 @@ class Contact extends React.Component{
                 value:'',
                 touched:false
             },
+            
             query:{
                 label:'Query',
                 elementType:'textarea',
@@ -47,7 +48,7 @@ class Contact extends React.Component{
                 validation:{
                   required:true,
                   minlength:100
-                  
+                             
                 },
                 valid:false,
                 value:'',
@@ -59,13 +60,12 @@ class Contact extends React.Component{
     {
          let isValid=true;
          if(rules.required)
-         {
+         {              
            isValid=value.trim()!=='' && isValid ;
          }
          if(rules.ajax)
          {
-            //  isValid== (rules.ajax.text(value)) && isValid; 
-            console.log(rules.ajax.test(value))
+            
             
          }
          if(rules.minlength)
@@ -93,6 +93,26 @@ class Contact extends React.Component{
     console.log(UpdatedForm)
     this.setState({orderForm:UpdatedForm})
    }
+   submit=(event)=>
+   {
+    event.preventDefault();
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({name:this.state.orderForm.name.value,email:this.state.orderForm.email.value,query:this.state.orderForm.query.value})
+    };
+      fetch('http://localhost:8080/contact_us', requestOptions)
+        .then(response => 
+            {
+            
+        }
+        )
+        .catch(error=>
+            {
+                console.log(error)
+            })
+        
+   }
 
     render(){
         let Array=[];
@@ -110,7 +130,7 @@ class Contact extends React.Component{
                 <div className="row">
                     <div className="col-md-6">
                        <div className="form-padding">
-                        <form>
+                        <form onSubmit={(event)=>this.submit(event)}>
                             { 
                             Array.map((element)=>
                             { 
@@ -128,7 +148,7 @@ class Contact extends React.Component{
                                               ()=>this.touched(element.id)} 
                                               onChange={
                                               (event)=>this.inputchangheHandler(event,element.id)    
-                                              }
+                                              }             
                                               className={(!element.config.touched||element.config.valid)?null:"invalid"}
                                               type={element.config.elementConfig.type}>
                                             </input>
@@ -171,7 +191,7 @@ class Contact extends React.Component{
                               }
                              )
                             } 
-                            
+                            <button type="submit">submit</button>
                         </form>
                        </div>
                     </div>

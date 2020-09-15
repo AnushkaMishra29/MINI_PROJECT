@@ -3,22 +3,21 @@ const nodemailer=require('nodemailer');
 const sendgridTransport=require('nodemailer-sendgrid-transport')
 const transport = nodemailer.createTransport(sendgridTransport({
     auth:{
-        api_key:"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"
+        api_key:"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"
     }
 }))
 exports.contactUs=(req,res,next)=>
-{   transport.sendMail({
+{   console.log(req.body.email)
+    transport.sendMail({
     to:req.body.email,
-    from:'11as1827000588@gmail.com',
-    subject:'ihiuh',
-    html:'<h1>Email aaya</h1>'
+    from:'arnavjainkht@gmail.com',
+    subject:'Query Confirmation',
+    html:'<h1>Your Query Has Been Submitted</h1>'
 
 }).then(()=>
 {
     res.status(201).json({
-        name:req.body.name,
-        email:req.body.email,
-        query:req.body.query
+        name:'Arnav'
     });
 }
 )
