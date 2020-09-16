@@ -25,7 +25,7 @@ class Wedo extends React.Component {
             ipsum as it is sometime print, graphic or web designs 
             </div> 
             <div className = "col-md-4 col-sm-12" >
-            <Carousel  controls={false} indicators={false} interval={1000}>
+            <Carousel  controls={false} indicators={false} interval={5000}>
               {
                   this.state.Images.map((image)=>
                   {

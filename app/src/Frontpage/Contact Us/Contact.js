@@ -103,8 +103,7 @@ class Contact extends React.Component{
     };
       fetch('http://localhost:8080/contact_us', requestOptions)
         .then(response => 
-            {
-            
+            {    
         }
         )
         .catch(error=>

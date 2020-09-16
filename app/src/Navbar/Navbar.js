@@ -1,17 +1,17 @@
 import React from 'react';
 import './Navbar.css';
+import {NavLink} from 'react-router-dom';
 class Navbar extends React.Component{
     render(){
         return(
             <div className='app'>
                 <div className='header'>
-                    <a href="#default" className="logo">LOGO</a>
+                    <NavLink exact className="logo" activeClassName="active" to="/">LOGO</NavLink>
                     <div className="header-right">
-                        <a href="#about">ABOUT US</a>
-                        <a href="#contact">CONTACT US</a>
-                    </div>
+                    <NavLink  activeClassName="active" to="/Login">Login</NavLink>
+                    <NavLink  activeClassName="active" to="/Signup">Signup</NavLink>
+                    </div> 
                 </div>
-                <div className='img'></div>
             </div>
         )
     }

@@ -1,7 +1,7 @@
 .wedo .letter
 {
     position:absolute;
-    top:223vh;
+    top:215vh;
     
     background:#262537;
     height: 18vw;
@@ -33,10 +33,16 @@
     color: white;
     font-size: 1.5vw;
 }
+@media only screen and (max-width: 1024px) {
+    .wedo .letter
+    {
+        top:208vh
+    }
+}
 @media only screen and (max-width: 991px) {
     .wedo .letter
     {
-        top:294vh
+        top:285vh
     }
 }
 @media only screen and (max-width: 991px) {

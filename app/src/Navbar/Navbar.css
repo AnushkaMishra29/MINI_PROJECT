@@ -1,9 +1,14 @@
+.app
+{
+    position:fixed !important;
+    top:0;
+    z-index: 10;
+}
 .header{
     overflow: hidden;
     padding: 20px 20px;
     background-color: #262537;
     width:100vw;
-    
     
 } 
 *{overflow-x: hidden;}
