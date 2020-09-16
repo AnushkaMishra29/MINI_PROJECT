@@ -1,22 +1,25 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Navbar from './Navbar/Navbar'
-import Landing from './Frontpage/Landing/Landing'
-import Searches from './Frontpage/Search/Search'
-import Wedo from './Frontpage/What we do/Wedo'
-import Contact from './Frontpage/Contact Us/Contact'
+import Frontpage from './Frontpage/Frontpage'
+import {BrowserRouter} from 'react-router-dom'
+import {Route,Switch} from 'react-router-dom'
+
+
 
 
 
 function App() {
   return (
    <div>
-     <Navbar></Navbar>
-     <Landing></Landing>    
-     <Searches></Searches> 
-     <Wedo></Wedo>
-     <Contact></Contact>
+   
+     <BrowserRouter>
+     <switch>
+       <Route path={'/'} exact component={Frontpage}></Route>
+       <Route path={'/login'} exact component={Frontpage}></Route>
+
+     </switch>
+     </BrowserRouter>
      </div>
   );
 }
