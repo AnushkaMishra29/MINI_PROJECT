@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const contactUs=require('./routes/contact-us')
 const auth=require('./routes/auth')
+const otp=require('./routes/otp-varification')
 
 
 app.use((req, res, next) => {
@@ -19,6 +20,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(contactUs)
 app.use(auth)
+app.use(otp)
 
 app.use((error,req,res,next)=>{
     const status = error.statusCode || 500;
