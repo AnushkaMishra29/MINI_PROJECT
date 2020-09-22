@@ -1,8 +1,9 @@
 .landing .img{
     background: url(/assets/children.png);
-    background-position:fixed;
+    background-position:center !important;
     background-size:cover;
-    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-repeat:no-repeat; 
    
 }
 .bg{

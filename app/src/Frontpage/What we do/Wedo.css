@@ -12,7 +12,7 @@
 }
 .wedo{
     background: url(/assets/wall.png);
-
+    background-attachment: fixed;
 }
 .wedo .heading
 {

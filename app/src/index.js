@@ -6,9 +6,14 @@ import "../node_modules/bootstrap/dist/css/bootstrap.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
 
+import reducer from './store/reducer';
+import {Provider} from 'react-redux'
+import {createStore} from 'redux';
+const store = createStore(reducer);
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+  <Provider store={store}><App/></Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

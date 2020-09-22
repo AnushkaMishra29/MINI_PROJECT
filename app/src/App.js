@@ -7,6 +7,7 @@ import Signup from './Signup/signup'
 
 import {BrowserRouter} from 'react-router-dom'
 import {Route,Switch} from 'react-router-dom'
+import loader from './Loader/loader'
 
 
 
@@ -15,16 +16,14 @@ import {Route,Switch} from 'react-router-dom'
 function App() {
   return (
    <div>
-   
      <BrowserRouter>
      <switch>
        <Route path={'/'} exact component={Frontpage}></Route>
        <Route path={'/login'}  component={Login}></Route>
        <Route path={'/signup'}  component={Signup}></Route>
-
-
-     </switch>
+      </switch>
      </BrowserRouter>
+
      </div>
   );
 }

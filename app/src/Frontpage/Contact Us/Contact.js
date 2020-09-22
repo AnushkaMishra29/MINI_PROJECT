@@ -1,7 +1,6 @@
 import React  from 'react'
 import './contact.css'
-import axios from 'axios'
-
+import {CONTACT_US} from '../../store/ServerService'
 
 class Contact extends React.Component{
    
@@ -90,27 +89,13 @@ class Contact extends React.Component{
     const updatedElement={...this.state.orderForm[id]}
     updatedElement.touched=true;
     UpdatedForm[id]=updatedElement;
-    console.log(UpdatedForm)
     this.setState({orderForm:UpdatedForm})
    }
    submit=(event)=>
    {
+     
     event.preventDefault();
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({name:this.state.orderForm.name.value,email:this.state.orderForm.email.value,query:this.state.orderForm.query.value})
-    };
-      fetch('http://localhost:8080/contact_us', requestOptions)
-        .then(response => 
-            {    
-        }
-        )
-        .catch(error=>
-            {
-                console.log(error)
-            })
-        
+    CONTACT_US(this.state.orderForm.name.value,this.state.orderForm.email.value,this.state.orderForm.query.value)    
    }
 
     render(){

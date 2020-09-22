@@ -1,7 +1,7 @@
 const user = require('../models/user');
 const {
     validationResult
-} = require('express-validator/check');
+} = require('express-validator');
 const otp = require('../models/otp')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
