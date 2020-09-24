@@ -1,6 +1,8 @@
 import React  from 'react'
 import './contact.css'
 import {CONTACT_US} from '../../store/ServerService'
+import { connect } from 'react-redux'
+import * as actionTypes from '../../store/action'
 
 class Contact extends React.Component{
    
@@ -93,9 +95,17 @@ class Contact extends React.Component{
    }
    submit=(event)=>
    {
-     
+     this.props.changeLoader()
     event.preventDefault();
-    CONTACT_US(this.state.orderForm.name.value,this.state.orderForm.email.value,this.state.orderForm.query.value)    
+    CONTACT_US(this.state.orderForm.name.value,this.state.orderForm.email.value,this.state.orderForm.query.value)
+    .then(response=>
+        {   this.props.changeLoader()
+            console.log(response.json())
+        })    
+    .catch(error=>
+        {   this.props.changeLoader()
+            console.log(error)
+        })    
    }
 
     render(){
@@ -189,4 +199,14 @@ class Contact extends React.Component{
     }
     
 }
-export default Contact;
+const mapStateToProps=state=>{
+    return {
+        ctr:state.loader   
+    }
+}
+const mapDispatchToProps=dispatch=>{
+    return{
+        changeLoader:()=>dispatch({type:actionTypes.CHANGE_LOADER}),
+    };
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Contact);

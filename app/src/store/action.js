@@ -1,1 +1,1 @@
-export const CONTACT_US='CONTACT_US'
+export const CHANGE_LOADER='CHANGE_LOADER'
