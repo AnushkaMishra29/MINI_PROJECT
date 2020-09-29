@@ -8,7 +8,7 @@ const transport = nodemailer.createTransport(sendgridTransport({
 }))
 exports.contactUs=(req,res,next)=>
 {   
-
+    console.log(req.body)
     transport.sendMail({
         to:'11as1827000588@gmail.com',
         from:'kavikmr9@gmail.com',
@@ -22,16 +22,11 @@ exports.contactUs=(req,res,next)=>
     from:'kavikmr9@gmail.com',
     subject:'Query Confirmation',
     html:'<h1>Your Query Has Been Submitted</h1>'
-
-})).then(()=>
+   })).then(()=>
 {
     res.status(201).json({
         name:'Arnav'
     });
 }
 )
-.catch(error=>
-{
-    console.log(error)
-})
 }

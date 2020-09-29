@@ -5,7 +5,6 @@ const otpSchema = new Schema({
   
     otp:{
         type:String,
-        required:true,
     },
     userId:
     {

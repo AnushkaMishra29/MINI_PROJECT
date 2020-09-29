@@ -2,18 +2,20 @@ const user = require('../models/user');
 const {
     validationResult
 } = require('express-validator');
-const otp = require('../models/otp')
+const otps = require('../models/otp')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
+const {
+    set
+} = require('mongoose');
 const transport = nodemailer.createTransport(sendgridTransport({
     auth: {
         api_key: process.env.API_KEY
     }
 }))
 require('dotenv').config();
-
 exports.signup = (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -54,35 +56,45 @@ exports.signup = (req, res, next) => {
                 message: "OTP IS SEND TO YOUR MAIL PLEASE VERIFY YOURSELF",
                 token: token,
                 userId: result._id.toString()
+
             })
 
             let OTP = '';
             for (let i = 0; i < 4; i++) {
                 OTP = OTP + Math.floor((Math.random() * 10));
             }
-            const otps = new otp({
+            const Otps = new otps({
                 otp: OTP,
                 userId: result._id.toString()
             })
-            otps.save().then((result) => {
-                transport.sendMail({
+            Otps.save().then((result) => {
+                    transport.sendMail({
                         to: req.body.email,
                         from: 'kavikmr9@gmail.com',
                         subject: 'OTP',
                         html: '<p>your otp is' + result.otp + '</p>'
+                    })
 
-                    })
-                    .then(() => {
-                        res.status(201).json({
-                            name: 'Arnav'
-                        });
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
-            })
+                })
+                .then(() => {
+                    console.log("otp send")
+                    const time = setInterval(() => {
+                        otps.findOne({
+                            userId: result._id
+                        }).then((otp) => {
+                            console.log(otp.otp)
+                            otp.otp = '';
+                            otp.save()
+                                .then((result) => {
+                                    console.log(result)
+                                })
+                        })
+
+                        clearInterval(time);
+                    }, 120000)
+                })
         })
-       .catch(err => {
+        .catch(err => {
             if (!err.statusCode) {
                 err.statusCode = 500;
             }
@@ -104,8 +116,7 @@ exports.login = (req, res, next) => {
                 error.statusCode = 401;
                 throw error;
             }
-            if(!user.verified)
-            {
+            if (!user.verified) {
                 const error = new Error('Please Verify Yourself First');
                 error.statusCode = 401;
                 throw error;

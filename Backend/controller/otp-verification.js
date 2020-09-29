@@ -1,5 +1,5 @@
 const user = require('../models/user');
-const otp = require('../models/otp')
+const otps = require('../models/otp')
 const nodemailer=require('nodemailer');
 const sendgridTransport=require('nodemailer-sendgrid-transport');
 const transport = nodemailer.createTransport(sendgridTransport({
@@ -10,9 +10,24 @@ const transport = nodemailer.createTransport(sendgridTransport({
 
 exports.otpcheck=(req,res,next)=>
 {
-    console.log(req.userId)
+    user.findOne({_id:req.userId}).then((user)=>
+{   console.log(user)
 
-otp.findOne({userId:req.userId}).then((result)=>
+    if(user.verified)
+    {
+        const error = new Error('User already verified');
+        error.statusCode = 422;
+        throw error;  
+    }
+}
+)
+.catch(err => {
+    if (!err.statusCode) {
+        err.statusCode = 500;
+    }
+    next(err);
+});
+otps.findOne({userId:req.userId}).then((result)=>
 {
     if(result.otp!==req.body.otp)
     {
@@ -20,6 +35,8 @@ otp.findOne({userId:req.userId}).then((result)=>
         error.statusCode = 422;
         throw error;
     }
+
+
     user.findOne({_id:req.userId}).then((USER)=>{
         USER.verified=true;
         return USER.save();
@@ -34,15 +51,31 @@ otp.findOne({userId:req.userId}).then((result)=>
     {
         console.log(error)
     })
+
 })
+.catch(err => {
+    if (!err.statusCode) {
+        err.statusCode = 500;
+    }
+    next(err);
+});
 }
 exports.resend=(req,res,next)=>
-{
+{   
+ user.findOne({_id:req.userId}).then((user)=>
+{   console.log(user)
+
+    if(user.verified)
+    {
+        const error = new Error('User already verified');
+        error.statusCode = 422;
+        throw error;  
+    }
     let OTP = '';
     for (let i = 0; i < 4; i++) {
         OTP = OTP + Math.floor((Math.random() * 10));
     }
-    otp.findOne({userId:req.userId}).then(
+    otps.findOne({userId:req.userId}).then(
         otp=>
         {
             otp.otp=OTP;
@@ -55,14 +88,40 @@ exports.resend=(req,res,next)=>
                     html: '<p> your otp is ' + result.otp + ' </p>'
 
                 })
-                .then(()=>
-                {
-                    res.status(200).json({
-                        message: "opt send",
-                    })
+                console.log(result.otp)
+            }).then(()=>
+            {
+                res.status(200).json({
+                    message: "OTP SEND TO YOUR MAIL",
                 })
-            })     
+               
+                    const time = setInterval(() => {
+                        otps.findOne({
+                            userId: req.userId
+                        }).then((otp) => {
+                            console.log(otp.otp)
+                            otp.otp = '';
+                            otp.save()
+                                .then((result) => {
+                                    console.log(result)
+                                })
+                        })
+    
+                        clearInterval(time);
+                    }, 120000)
+                
+                
+            })    
         }
         
     )
+}
+)
+.catch(err => {
+    if (!err.statusCode) {
+        err.statusCode = 500;
+    }
+    next(err);
+});
+
 }
