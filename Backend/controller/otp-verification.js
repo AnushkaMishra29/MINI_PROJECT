@@ -62,7 +62,7 @@ otps.findOne({userId:req.userId}).then((result)=>
 }
 exports.resend=(req,res,next)=>
 {   
- user.findOne({_id:req.userId}).then((user)=>
+ user.findById({_id:req.userId}).then((user)=>
 {   console.log(user)
 
     if(user.verified)

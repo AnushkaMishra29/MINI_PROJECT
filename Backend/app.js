@@ -3,12 +3,36 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config()
 const bodyParser = require('body-parser');
-
 const app = express();
+const multer=require('multer')
+const fileStorage=multer.diskStorage({
+    destination:(req,file,cb)=>
+    {
+        cb(null,'./images')
+    },
+    filename:(req,file,cb)=>
+    {   
+        cb(null,file.originalname)
+    }
+});   
+const fileFilter=(req,file,cb)=>
+    {
+       if(file.mimetype === 'image/png'||
+         file.mimetype === 'image/jpg'||
+         file.mimetype === 'image/jpeg')
+         {
+          cb(null,true);   
+         }
+         else
+         {
+          cb(null,false);
+         }
+    };
+
 const contactUs=require('./routes/contact-us')
 const auth=require('./routes/auth')
 const otp=require('./routes/otp-varification')
-
+const organization=require('./routes/organization/add_orginization')
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -18,9 +42,14 @@ app.use((req, res, next) => {
 })
 
 app.use(bodyParser.json());
-app.use(contactUs)
-app.use(auth)
-app.use(otp)
+app.use(multer
+    ({storage:fileStorage,fileFilter:fileFilter}).single('image')
+    )
+app.use('/images',express.static(path.join(__dirname,'./images')));
+app.use(contactUs);
+app.use(auth);
+app.use(otp);
+app.use(organization);
 
 app.use((error,req,res,next)=>{
     const status = error.statusCode || 500;
@@ -37,4 +66,5 @@ mongoose.connect('mongodb+srv://Aj:1234567890@shoppingelf.g9ogi.mongodb.net/Shop
 .catch(err=>
 {
     console.log(err);
+    next(err);
 })

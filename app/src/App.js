@@ -4,10 +4,9 @@ import './App.css';
 import Frontpage from './Frontpage/Frontpage'
 import Login from './Login/login'
 import Signup from './Signup/signup'
-
+import orginization from './organization/organization'
 import {BrowserRouter} from 'react-router-dom'
 import {Route,Switch} from 'react-router-dom'
-import loader from './Loader/loader'
 
 
 
@@ -15,17 +14,16 @@ import loader from './Loader/loader'
 
 function App() {
   return (
-   <div>
+   <div className="row">
      <BrowserRouter>
-     
-     <switch>
+      <switch>
        <Route path={'/'} exact component={Frontpage}></Route>
-       <Route path={'/login'}  component={Login}></Route>
-       <Route path={'/signup'}  component={Signup}></Route>
+       <Route path={'/login'} exaxt component={Login}></Route>
+       <Route path={'/signup'} exact  component={Signup}></Route>
+       <Route path={'/orginization'} exact component={orginization}></Route>
       </switch>
      </BrowserRouter>
-
-     </div>
+    </div>
   );
 }
 
