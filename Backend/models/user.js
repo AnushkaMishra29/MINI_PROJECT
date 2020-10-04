@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const vollenters = require('./vollenters');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -21,10 +22,13 @@ const userSchema = new Schema({
         type:Boolean,
         required:true,
         default:false
+    },
+    vollenter:
+    {
+        type:Schema.Types.ObjectId, ref:'vollenters',
     }
-    
 
 
 })
 
-module.exports = mongoose.model('user',userSchema);
+module.exports = mongoose.model('users',userSchema);

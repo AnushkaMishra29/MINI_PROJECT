@@ -1,4 +1,4 @@
-const organization = require('../../models/orginization')
+const organization = require('../../models/organization')
 
 exports.register=(req,res,next)=>
 {   console.log('hello')
@@ -7,5 +7,4 @@ exports.register=(req,res,next)=>
           console.log('not found')
     }
     console.log(new Date().toISOString())
-    
 }
