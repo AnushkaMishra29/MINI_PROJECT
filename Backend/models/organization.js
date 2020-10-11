@@ -25,7 +25,7 @@ const organizationSchema = new Schema({
     },
     Email_verified:
     {
-        type:Bollean,
+        type:Boolean,
         default:false
 
     },
@@ -48,11 +48,6 @@ const organizationSchema = new Schema({
     {
         type:String,
         required:true
-    },
-    coordinator:
-    {
-        type:String,
-        required:true,
     },
     document:
     {

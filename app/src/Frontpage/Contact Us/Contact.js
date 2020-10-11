@@ -1,4 +1,4 @@
-import React  from 'react'
+import React, { useCallback }  from 'react'
 import './contact.css'
 import {CONTACT_US} from '../../store/ServerService'
 import { connect } from 'react-redux'
@@ -7,7 +7,7 @@ import * as actionTypes from '../../store/action'
 class Contact extends React.Component{
    
     state={
-        orderForm:{
+        orderForm:{ 
             name:{
                 label:'Name',
                 elementType:'input',
@@ -87,12 +87,26 @@ class Contact extends React.Component{
     } 
     touched=(id)=>
    {
-    const UpdatedForm={...this.state.orderForm};
+    const UpdatedForm={...this.state};
     const updatedElement={...this.state.orderForm[id]}
     updatedElement.touched=true;
     UpdatedForm[id]=updatedElement;
     this.setState({orderForm:UpdatedForm})
-   }
+
+    //  let Array=[];
+    //  for(let key in this.state.orderForm)
+    //  {
+    //         Array.push({id:key,config:this.state.orderForm[key]} )
+    //  }
+    //  Array.splice(index,1);
+    //  const obj ={};
+    //  for(const x of Array)
+    //  {
+    //      obj[x.id]=x.config;
+    //  }
+    //  console.log(obj);
+    //  this.setState({orderForm:obj})
+    }
    submit=(event)=>
    {
      this.props.changeLoader()
@@ -110,6 +124,7 @@ class Contact extends React.Component{
 
     render(){
         let Array=[];
+        
          for(let key in this.state.orderForm)
          {
             Array.push({id:key,config:this.state.orderForm[key]} )
@@ -136,7 +151,7 @@ class Contact extends React.Component{
                                              <label>{element.config.label}</label>
                                          </div>
                                          <div>
-                                            <input
+                                            <input 
                                              value={element.config.value} 
                                               onClick={
                                               ()=>this.touched(element.id)} 
@@ -193,7 +208,9 @@ class Contact extends React.Component{
                         <img src='/assets/email.png'></img>
                     </div>
                 </div>
-
+                 <div>
+                     
+                 </div>
             </div>
         )
     }

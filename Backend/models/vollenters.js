@@ -22,24 +22,24 @@ const vollentersSchema = new Schema({
          type:String,
          required:true,
     },
-    Orginization1:
-    {
-        type:Schema.Types.ObjectId, ref:'organizations',
+    // Orginization1:
+    // {
+    //     type:Schema.Types.ObjectId, ref:'organizations',
      
      
-    },
-    Orginization2:
-    {
-        type:Schema.Types.ObjectId, ref:'organizations',
+    // },
+    // Orginization2:
+    // {
+    //     type:Schema.Types.ObjectId, ref:'organizations',
         
     
-    },
-    Orginization3:
-    {
-        type:Schema.Types.ObjectId, ref:'organizations',
+    // },
+    // Orginization3:
+    // {
+    //     type:Schema.Types.ObjectId, ref:'organizations',
         
        
-    },
+    // },
     verified1:
     {
        type:Boolean,

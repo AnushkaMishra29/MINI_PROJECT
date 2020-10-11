@@ -1,15 +1,10 @@
 const user = require('../models/user');
-const {
-    validationResult
-} = require('express-validator');
+const {validationResult} = require('express-validator');
 const otps = require('../models/otp')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
-const {
-    set
-} = require('mongoose');
 const transport = nodemailer.createTransport(sendgridTransport({
     auth: {
         api_key: process.env.API_KEY
