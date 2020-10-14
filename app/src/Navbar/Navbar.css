@@ -1,19 +1,24 @@
 .app
 {
-    position:fixed !important;
-    top:0;
-    z-index: 10;
+    width: 100vw;
 }
-.header{
-    overflow: hidden;
-    padding: 20px 20px;
-    background-color: #262537;
-    width:100vw;
-    
-} 
-*{overflow-x: hidden;}
-
-.header a {
+.app button{
+    position: absolute;
+    left:90vw;
+    top:10px;
+}
+.app #Navbar
+{
+  width:100vw !important;
+  min-height: 60px;
+  z-index: 100;
+  position: relative;
+}
+.app img{
+    height: 60px
+ }
+.app #Navlink
+{
     float: left;
     color: #fff;
     text-align: center;
@@ -26,22 +31,29 @@
     font-style: bold;
 }
 
-.header-right{
-    float: right;
-    text-decoration:none ;
-}
-.header-right a:hover{
-    background-color:#2C2A56;
-}
 @media screen and (max-width: 500px) {
-    .header a {
-      float: none;
-      display: block;
-      text-align: left;
+    .app button{
+        position: absolute;
+        left:85vw;
+        top:15px;
+    } 
+    .app #Navlink
+    {
+        font-size: 15px;
     }
-    .header-right {
-      float: none;
+    .app #nav-link
+    {
+        padding: 0px 25vw;
     }
+    .app img{
+        height: 40px
+     }
+    .app .logo
+    {
+      
+    }
+    
+    
 }
 
-
+ 
