@@ -7,7 +7,7 @@ import * as actionTypes from '../../store/action'
 class Contact extends React.Component{
    
     state={
-        orderForm:{ 
+        orderForm:{
             name:{
                 label:'Name',
                 elementType:'input',
@@ -66,8 +66,7 @@ class Contact extends React.Component{
          }
          if(rules.ajax)
          {
-            
-            
+            isValid=value.trim().match(rules.ajax) && isValid ;
          }
          if(rules.minlength)
          {
@@ -87,26 +86,12 @@ class Contact extends React.Component{
     } 
     touched=(id)=>
    {
-    const UpdatedForm={...this.state};
+    const UpdatedForm={...this.state.orderForm};
     const updatedElement={...this.state.orderForm[id]}
     updatedElement.touched=true;
     UpdatedForm[id]=updatedElement;
     this.setState({orderForm:UpdatedForm})
-
-    //  let Array=[];
-    //  for(let key in this.state.orderForm)
-    //  {
-    //         Array.push({id:key,config:this.state.orderForm[key]} )
-    //  }
-    //  Array.splice(index,1);
-    //  const obj ={};
-    //  for(const x of Array)
-    //  {
-    //      obj[x.id]=x.config;
-    //  }
-    //  console.log(obj);
-    //  this.setState({orderForm:obj})
-    }
+   }
    submit=(event)=>
    {
      this.props.changeLoader()
@@ -121,7 +106,6 @@ class Contact extends React.Component{
             console.log(error)
         })    
    }
-
     render(){
         let Array=[];
         
@@ -144,13 +128,13 @@ class Contact extends React.Component{
                             Array.map((element)=>
                             { 
                                 if(element.config.elementType=='input')
-                                {
+                                { 
                                     return(
                                         <div key={element.id}>
-                                         <div>
+                                         <div className="label-padding">
                                              <label>{element.config.label}</label>
                                          </div>
-                                         <div>
+                                         <div className="form-center">
                                             <input 
                                              value={element.config.value} 
                                               onClick={
@@ -159,7 +143,7 @@ class Contact extends React.Component{
                                               (event)=>this.inputchangheHandler(event,element.id)    
                                               }             
                                               className={(!element.config.touched||element.config.valid)?null:"invalid"}
-                                              type={element.config.elementConfig.type}>
+                                             >
                                             </input>
                                          </div>
                                           <div>
@@ -174,10 +158,10 @@ class Contact extends React.Component{
                                 else{
                                     return (
                                     <div key={element.id}>
-                                        <div>
+                                        <div className="label-padding">
                                              <label>{element.config.label}</label>
                                          </div>
-                                         <div>
+                                         <div className="form-center">
                                              <textarea
                                               value={element.config.value} 
                                               onClick={
@@ -186,7 +170,7 @@ class Contact extends React.Component{
                                               (event)=>this.inputchangheHandler(event,element.id)    
                                                 }
                                               className={(!element.config.touched||element.config.valid)?null:"invalid"}
-                                              type={element.config.elementConfig.type}></textarea>
+                                              ></textarea>
                                          </div>
                                           <div>
                                          <span 
@@ -200,11 +184,11 @@ class Contact extends React.Component{
                               }
                              )
                             } 
-                            <button type="submit">submit</button>
+                            <button className="btn-4" type="submit">submit</button>
                         </form>
                        </div>
                     </div>
-                    <div class ="col-md-6 center">
+                    <div class ="col-md-6 center display">
                         <img src='/assets/email.png'></img>
                     </div>
                 </div>

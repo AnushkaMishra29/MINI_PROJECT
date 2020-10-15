@@ -6,6 +6,19 @@
     background-repeat:no-repeat; 
    
 }
+.landing p{
+    position: relative;
+    z-index: 10;
+}
+.landing .layer
+{
+    background: black;
+    height: 100vh;
+    width: 100vw;
+    position:absolute;
+    top:0;
+    opacity:0.3;
+}
 .bg{
     background:Url(/assets/bg.png);
     min-height: 100vh;
@@ -13,23 +26,36 @@
     background-size:cover;
     background-repeat:no-repeat;
 }
-.img-text{
+.landing .img-text{
     color: #fff;
     font-size:3vw;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    padding-top: 20%;
+    padding-top:40vh;
     padding-left:100px ;
 }
 @media only screen and (max-width: 768px) {
     
-    .img-text{
+   .landing .img-text{
         color: white;
         text-align: center;
         font-family: 'Montserrat', sans-serif;
-        font: size 1.3vw;
+        font-size:  4vw;
         margin-bottom: 0px;
+        padding-left:0px ;
     }
 }
+@media only screen and (max-width: 500px) {
+    
+    .landing .img-text{
+         color: white;
+         text-align: center;
+         font-family: 'Montserrat', sans-serif;
+         font-size:  6vw;
+         margin-bottom: 0px;
+         padding-left:0px ;
+     }
+ }
+ 
 
 

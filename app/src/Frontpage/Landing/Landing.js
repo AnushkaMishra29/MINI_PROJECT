@@ -4,6 +4,9 @@ class Landing extends React.Component{
     render(){
         return(
             <div className="landing">
+            <div className="layer">
+
+            </div>
             <div className='img'>
                 <div className='bg'>
                     <div className='img-text'>
