@@ -107,6 +107,7 @@ class Contact extends React.Component{
         })    
    }
     render(){
+        console.log(this.props.ctr)
         let Array=[];
         
          for(let key in this.state.orderForm)
