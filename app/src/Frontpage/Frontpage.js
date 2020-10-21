@@ -16,7 +16,6 @@ class Frontpage extends Component{
          <Search></Search>
          <Wedo></Wedo>
          <Contact_US></Contact_US>
-         <Loader></Loader>
          </div>
 
        )

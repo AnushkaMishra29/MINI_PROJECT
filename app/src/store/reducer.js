@@ -76,8 +76,9 @@ const initialState=
 const reducer =(state=initialState,action)=>
     {
         switch(action.type)
-        {
+        {   
             case actionTypes.CHANGE_LOADER:
+                console.log('sdj');
                 return {
                     ...state,
                     loader:!state.loader

@@ -1,8 +1,27 @@
 import React,{Component, component} from 'react'
 import './Body.css'
+import {Signup} from '../../store/ServerService'
+import { connect } from 'react-redux'
+import * as actionTypes from '../../store/action'
 class Body extends Component{
     state={
+        submitted:false,
         orderForm:{ 
+           
+            name:{
+                label:'Name',
+                elementType:'input',
+                elementConfig:{
+                    type:'text',
+                },
+                error:'Name is required',
+                validation:{
+                  required:true,
+                },
+                valid:false,
+                value:'',
+                touched:false
+            },
             email:{
                 label:'Email',
                 elementType:'input',
@@ -28,7 +47,7 @@ class Body extends Component{
                 error:'Enter Your Password',
                 validation:{
                   required:true,
-                  check:'confirm_password'        
+                  ajax:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/     
                 },
                 valid:false,
                 value:'',
@@ -68,8 +87,7 @@ class Body extends Component{
            isValid=value.trim().length>=rules.minlength && isValid;
          }
          if(rules.checkwith)
-         {   console.log('checkin')
-             console.log(this.state.orderForm[rules.checkwith].value)
+         {  
              isValid=(value.trim()==(this.state.orderForm[rules.checkwith].value))&&isValid
          }
          return isValid
@@ -96,9 +114,31 @@ class Body extends Component{
    }
    submit=(event)=>
    {
-     this.props.changeLoader()
-    event.preventDefault();
-      
+     event.preventDefault();
+     this.setState({submitted:true})
+     let valid=true;
+     const UpdatedForm={...this.state.orderForm};
+     for(let key in this.state.orderForm)
+     {
+         valid=valid&&this.state.orderForm[key].valid;
+         let updatedElement={...this.state.orderForm[key]}
+         if(!this.state.orderForm[key].valid)
+         {
+             updatedElement.value="";
+             UpdatedForm[key]=updatedElement;
+         }
+     }
+     this.setState({orderForm:UpdatedForm});
+     if(valid)
+     { this.props.changeLoader();
+        
+     Signup(this.state.orderForm.name.value,this.state.orderForm.email.value,this.state.orderForm.password.value).then((response)=>
+     { 
+        this.props.changeLoader();
+        response.json().then((response)=>{console.log(response)})
+     })
+    }
+
    }
     render()
     {   let Array=[];
@@ -140,13 +180,13 @@ class Body extends Component{
                                               onChange={
                                               (event)=>this.inputchangheHandler(event,element.id)    
                                               }             
-                                              className={(!element.config.touched||element.config.valid)?null:"invalid"}
+                                              className={(!this.state.submitted||element.config.valid)?null:"invalid"}
                                              >
                                             </input>
                                          </div>
                                           <div>
                                           <span 
-                                          className={(!element.config.touched||element.config.valid)?"opacity":"error"}
+                                          className={(!this.state.submitted||element.config.valid)?"opacity":"error"}
                                          >{element.config.error}
                                          </span>
                                           </div>
@@ -167,4 +207,14 @@ class Body extends Component{
         )
     }
 }
-export default Body
+const mapStateToProps=state=>{
+    return {
+        ctr:state.loader   
+    }
+}
+const mapDispatchToProps=dispatch=>{
+    return{
+        changeLoader:()=>dispatch({type:actionTypes.CHANGE_LOADER}),
+    };
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Body)

@@ -3,7 +3,7 @@ import Item from './search-item/search-item'
 import './Search.css'
 class Search extends Component{
     render()
-    {
+    {   
         return (
             <div className="background">
                 <div className="center font padding">
@@ -16,6 +16,7 @@ class Search extends Component{
                         <Item 
                           name="Govt School"
                           class="School"
+                          replace="/government_schools"
                           para="
                           Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes
                           "
@@ -25,6 +26,7 @@ class Search extends Component{
                     <Item 
                       name="Ngo"
                       class="Ngo"
+                      replace="/government_schools"
                      para="
                      Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes
                      "
@@ -35,6 +37,7 @@ class Search extends Component{
                     <Item image="/assets/Donate.png"
                        name="Donate Here"
                        class="Donate"
+                       replace="/government_schools"
                       para="
                       Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes
                       ">
@@ -44,6 +47,7 @@ class Search extends Component{
                     <Item
                      name="Announcements"
                      class="Announcement"
+                     replace="/government_schools"
                      para="
                      Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes
                      "

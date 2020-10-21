@@ -17,8 +17,8 @@ router.post('/signup',[
                 }
             })
     }).normalizeEmail(),
-    body('password').trim().isLength({min:5}),
-    body('name').trim().not().isEmpty()],authController.signup);
+    body('password').trim().not().isEmpty().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})"),
+    body('name').trim().not().isEmpty()],authController.signup)
 
     router.post('/login',authController.login)
 module.exports = router

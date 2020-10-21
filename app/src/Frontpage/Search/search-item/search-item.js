@@ -1,10 +1,18 @@
 import React,{Component} from 'react'
 import './search-item.css'
+import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 class SearchItem extends Component
 {
+    replace=(replace)=>
+    {
+        console.log(replace)
+       this.props.history.push(replace);
+       
+    }
     render()
     {
-        // const image='/assets/announcement.png'
+       
         return(
             <div className="search-item">
                   <div className="Container">
@@ -20,7 +28,7 @@ class SearchItem extends Component
                       </p>
                       </div>
                       <div>
-                      <button className="btn-4">More</button>
+                      <button onClick={()=>this.replace(this.props.replace)} className="btn-4">More</button>
                       </div>
                   </div>
             </div>
@@ -28,4 +36,4 @@ class SearchItem extends Component
     }
 
 }
-export default SearchItem
+export default withRouter(SearchItem);
