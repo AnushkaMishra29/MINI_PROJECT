@@ -1,5 +1,4 @@
 
-import * as actionTypes from './action';
 const base_url="http://localhost:8080";
 const CONTACT_US=(name,email,query)=>
 {    
@@ -21,4 +20,11 @@ const Signup=(name,email,password)=>
     };
       return fetch(base_url+'/signup', requestOptions)
 }
-export {CONTACT_US,Signup}
+const getOrginization=()=>
+{
+    const requestOptions = {
+        method: 'GET',
+    };
+      return fetch(base_url+'/get-orginization', requestOptions)
+}
+export {CONTACT_US,Signup,getOrginization}

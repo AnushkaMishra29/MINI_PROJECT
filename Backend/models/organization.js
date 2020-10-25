@@ -29,16 +29,16 @@ const organizationSchema = new Schema({
         default:false
 
     },
-    image:
-    {
-        type:String,
-        required:true
-    },    
-    location:
-    {
-        type:Schema.Types.ObjectId, ref:'locations',
-        required:true
-    },
+    // image:
+    // {
+    //     type:String,
+    //     required:true
+    // },    
+    // location:
+    // {
+    //     type:Schema.Types.ObjectId, ref:'locations',
+    //     required:true
+    // },
     contact_number:
     {
         type:String,
@@ -49,11 +49,11 @@ const organizationSchema = new Schema({
         type:String,
         required:true
     },
-    document:
-    {
-        type:String,
-        required:true
-    }
+    // document:
+    // {
+    //     type:String,
+    //     required:true
+    // }
 })
 
 module.exports = mongoose.model('organizations',organizationSchema);

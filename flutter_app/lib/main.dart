@@ -96,8 +96,19 @@ class Display extends StatefulWidget {
 }
 
 class _DisplayState extends State<Display> {
-  var number1 = 6;
-  var number2 = 6;
+  var number1 = 0;
+  var number2 = 0;
+  void leftPressed() {
+    setState(() {
+      number1 = number1 + 1;
+    });
+  }
+
+  void rightPressed() {
+    setState(() {
+      number2 = number2 + 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,9 +118,7 @@ class _DisplayState extends State<Display> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: FlatButton(
-              onPressed: () {
-                print('Left button pressed');
-              },
+              onPressed: leftPressed,
               child: Container(
                 color: Color(0xFF262537),
                 child: Center(
@@ -128,16 +137,14 @@ class _DisplayState extends State<Display> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: FlatButton(
-              onPressed: () {
-                print('Right button pressed');
-              },
+              onPressed: rightPressed,
               child: Container(
                 color: Color(0xFF262537),
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'press',
+                      'press$number2',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

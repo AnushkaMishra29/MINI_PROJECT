@@ -1,4 +1,5 @@
 import React,{Component, component} from 'react'
+import Pagination from 'react-bootstrap/Pagination'
 class Orginization extends Component{
      
     formdata=new FormData();
@@ -9,8 +10,6 @@ class Orginization extends Component{
     }
     submit()
     {   
-        console.log('hello');
-
         const requestOptions = {
             method: 'POST',
             body: this.formdata
