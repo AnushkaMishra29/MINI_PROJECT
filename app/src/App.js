@@ -21,7 +21,7 @@ function App() {
      <BrowserRouter>
       <Switch>
        <Route path={'/'} exact component={Frontpage}></Route>
-       <Route path={'/login'} exaxt component={Login}></Route>
+       <Route path={'/login'} exact component={Login}></Route>
        <Route path={'/signup'} exact  component={Signup}></Route>
        <Route path={'/orginization'} exact component={orginization}></Route>
        <Route path={'/government_schools'} exact component={Government}></Route>
