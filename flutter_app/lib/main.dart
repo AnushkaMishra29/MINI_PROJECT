@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,6 +13,8 @@ class MyApp extends StatelessWidget {
             backgroundColor: Color(0xFF262537),
           ),
           body: Container(
+            width: double.infinity,
+            height: 1000,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('images/wall.png'), fit: BoxFit.fill)),
@@ -19,6 +22,10 @@ class MyApp extends StatelessWidget {
               child: Container(
                 child: Column(
                   children: [
+                    TextField(
+                      decoration: InputDecoration(
+                          labelText: 'Enter', focusColor: Colors.red),
+                    ),
                     CircleAvatar(
                         radius: 50.0,
                         backgroundImage: AssetImage('images/Arnav.png')),
@@ -76,11 +83,28 @@ class MyApp extends StatelessWidget {
                             SizedBox(
                               width: 10.0,
                             ),
-                            Text('arnavjainkht@gmail.com',
-                                style: TextStyle(color: Colors.white)),
+                            Text(
+                              'arnavjainkht@gmail.com',
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ],
                         )),
-                    Display()
+                    Display(),
+                    Card(
+                      color: Colors.blue,
+                      child: Text(
+                        'hello',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      elevation: 5,
+                    ),
+                    Container(
+                      color: Colors.red,
+                      height: 200,
+                      child: ListView(
+                        children: [Home()],
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -155,5 +179,55 @@ class _DisplayState extends State<Display> {
         ),
       ],
     );
+  }
+}
+
+class Home extends StatelessWidget {
+  final List<Transaction> transaction = [
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    Transaction(
+        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        // child: Column(children: <Widget>[
+        //   Card(),
+        //   Card(),
+        // ]),
+        child: Column(
+      children: transaction.map((tx) {
+        return Card(
+          child: Text('hello'),
+        );
+      }).toList(),
+    ));
   }
 }
