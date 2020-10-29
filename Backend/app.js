@@ -71,7 +71,7 @@ mongoose.connect(process.env.mongo)
 
 .then((result)=>
 {
-    app.listen(process.env.port||8080);
+    app.listen(process.env.PORT||8080);
 })
 .catch(err=>
 {

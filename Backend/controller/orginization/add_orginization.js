@@ -1,6 +1,8 @@
 const organization = require('../../models/organization')
 const {validationResult} = require('express-validator');
 const multer=require('multer')
+
+
 exports.register=(req,res,next)=>
 {   console.log(req.body.email)
     const errors = validationResult(req);

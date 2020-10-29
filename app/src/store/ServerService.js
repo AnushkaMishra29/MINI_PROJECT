@@ -1,5 +1,5 @@
 
-const base_url="http://localhost:8080";
+const base_url="https://backendeducationportal.herokuapp.com";
 const CONTACT_US=(name,email,query)=>
 {    
     console.log(JSON.stringify({name:name,email:email,query:query}))
