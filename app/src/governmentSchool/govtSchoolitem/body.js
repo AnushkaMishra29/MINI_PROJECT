@@ -4,7 +4,8 @@ class Body extends Component{
     render()
     {   console.log(this.props.element.image)
         return (
-            <div className="school-item">
+            
+            <div  className="school-item">
                 <div className="width">
                 <div className="card">
                  <div className="image">

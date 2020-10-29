@@ -27,4 +27,13 @@ const getOrginization=()=>
     };
       return fetch(base_url+'/get-orginization', requestOptions)
 }
-export {CONTACT_US,Signup,getOrginization}
+const Otp=(otp)=>
+{   console.log(JSON.stringify({otp}))
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' ,'Authorization':localStorage.getItem('token')},
+        body:JSON.stringify({otp})
+    };
+    return fetch(base_url+'/otpVerification', requestOptions)
+}
+export {CONTACT_US,Signup,getOrginization,Otp}

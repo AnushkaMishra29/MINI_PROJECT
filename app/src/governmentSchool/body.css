@@ -9,6 +9,15 @@
     padding-top: 28vh;
     background-attachment: fixed;
 }
+.govt #dropdown-basic
+{
+    background:#252537;
+    border-radius: 100px;
+}
+.govt .border
+{
+    border-radius: 100px;
+}
 .govt .layer
 {
     background: black;

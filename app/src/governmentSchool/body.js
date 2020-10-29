@@ -5,7 +5,12 @@ import Child from './govtSchoolitem/body'
 import { connect } from 'react-redux'
 import {getOrginization} from '../store/ServerService'
 import * as actionTypes from '../store/action'
+import Dropdown from 'react-bootstrap/Dropdown'
 class Body extends Component{
+    state=
+    {
+        location:""
+    }
     componentDidMount()
     {   this.props.changeLoader()
         getOrginization().then(response=>
@@ -21,6 +26,10 @@ class Body extends Component{
     number(n=0)
     {
        return 0;
+    }
+    location=(location)=>
+    {
+       this.setState({location:location})
     }
 
     render()
@@ -57,8 +66,18 @@ class Body extends Component{
                   </div>
                 </div>
                 <div className="bg">
+                <Dropdown id="border">
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  Dropdown Button
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                <Dropdown.Item onClick={()=>this.location("Meerut")}>Meerut</Dropdown.Item>
+                <Dropdown.Item onClick={()=>this.location("Muzaffarnage")}>Muzaffarnage</Dropdown.Item>
+                <Dropdown.Item onClick={()=>this.location("Something else")}>Something else</Dropdown.Item>
+                </Dropdown.Menu>
+                </Dropdown>
                 {A.map(order=>(
-                   <Child element={order}></Child>
+                   <Child sort={this.state.location} element={order}></Child>
                 ))}
                  <button className="btn btn-success">+</button>
             </div>

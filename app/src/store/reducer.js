@@ -2,7 +2,8 @@ import * as actionTypes from './action';
 const initialState=
 {
     loader:false,
-    goveSchools:[]
+    goveSchools:[],
+    govt_location:""
 }
 const reducer =(state=initialState,action)=>
     {
@@ -13,7 +14,6 @@ const reducer =(state=initialState,action)=>
                     ...state,
                     loader:!state.loader
                 }
-              
             case actionTypes.SCHOOLS:
                
                 state.goveSchools=action.array;

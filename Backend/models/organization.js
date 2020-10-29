@@ -13,11 +13,6 @@ const organizationSchema = new Schema({
         required:true
 
     },
-    password:
-    {
-        type:String,
-        required:true,
-    },
     Org_verified:
     {
         type:Boolean,
@@ -29,31 +24,26 @@ const organizationSchema = new Schema({
         default:false
 
     },
-    // image:
-    // {
-    //     type:String,
-    //     required:true
-    // },    
-    // location:
-    // {
-    //     type:Schema.Types.ObjectId, ref:'locations',
-    //     required:true
-    // },
-    contact_number:
+    image:
+    {
+        type:String,
+        required:true
+    },    
+    location:
     {
         type:String,
         required:true
     },
-    paytm_number:
+    address:
     {
         type:String,
         required:true
     },
-    // document:
-    // {
-    //     type:String,
-    //     required:true
-    // }
+    location:
+    {
+        type:String,
+        required:true
+    }
 })
 
 module.exports = mongoose.model('organizations',organizationSchema);

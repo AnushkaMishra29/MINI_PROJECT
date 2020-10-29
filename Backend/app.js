@@ -3,15 +3,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config()
 const bodyParser = require('body-parser');
+const compression = require('compression')
 const app = express();
-const multer=require('multer')
+
+const multer=require('multer');
+const helmet = require("helmet");
 const fileStorage=multer.diskStorage({
     destination:(req,file,cb)=>
     {
         cb(null,'./images')
     },
     filename:(req,file,cb)=>
-    {   
+    {    
         cb(null,file.originalname)
     }
 });   
@@ -34,6 +37,8 @@ const auth=require('./routes/auth')
 const otp=require('./routes/otp-varification')
 const organization=require('./routes/organization/add_orginization')
 
+app.use(helmet());
+app.use(compression());
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
@@ -43,7 +48,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use(multer
-    ({storage:fileStorage,fileFilter:fileFilter}).array('files')
+    ({storage:fileStorage,fileFilter:fileFilter}).single('file')
     )
 app.use('/images',express.static(path.join(__dirname,'./images')));
 app.use(contactUs);
@@ -57,11 +62,16 @@ app.use((error,req,res,next)=>{
     const data =error.data;
     res.status(status).json({message:message,data:data});
 })
+console.log(process.env.mongo);
+mongoose.connect(process.env.mongo)
+.then(()=>
+{
+    console.log("connected");
+})
 
-mongoose.connect('mongodb+srv://Aj:1234567890@shoppingelf.g9ogi.mongodb.net/ShoppingElf?retryWrites=true&w=majority')
 .then((result)=>
 {
-    app.listen(8080);
+    app.listen(process.env.port||8080);
 })
 .catch(err=>
 {

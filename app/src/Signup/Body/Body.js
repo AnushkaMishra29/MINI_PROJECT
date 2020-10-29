@@ -2,6 +2,7 @@ import React,{Component, component} from 'react'
 import './Body.css'
 import {Signup} from '../../store/ServerService'
 import { connect } from 'react-redux'
+import { withRouter, Redirect } from "react-router-dom";
 import * as actionTypes from '../../store/action'
 class Body extends Component{
     state={
@@ -135,7 +136,11 @@ class Body extends Component{
      Signup(this.state.orderForm.name.value,this.state.orderForm.email.value,this.state.orderForm.password.value).then((response)=>
      { 
         this.props.changeLoader();
-        response.json().then((response)=>{console.log(response)})
+        response.json().then((response)=>{
+            console.log(response);
+            localStorage.setItem("token",response.token);
+            this.props.history.replace('/otp');
+        })
      })
     }
 
@@ -217,4 +222,4 @@ const mapDispatchToProps=dispatch=>{
         changeLoader:()=>dispatch({type:actionTypes.CHANGE_LOADER}),
     };
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Body)
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Body))
