@@ -1,5 +1,6 @@
 import React,{Component, component} from 'react'
 import './Body.css'
+import {login} from '../../store/ServerService'
 class Body extends Component{
     state={
         orderForm:{ 
@@ -74,6 +75,7 @@ class Body extends Component{
    submit=(event)=>
    {
      this.props.changeLoader()
+     login(this.state.orderform.email,this.state.orderForm.password)
     event.preventDefault();
       
    }

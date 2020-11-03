@@ -3,6 +3,7 @@ import './Body.css'
 import {Signup} from '../../store/ServerService'
 import { connect } from 'react-redux'
 import { withRouter, Redirect } from "react-router-dom";
+import Swal from 'sweetalert2';
 import * as actionTypes from '../../store/action'
 class Body extends Component{
     state={
@@ -137,9 +138,27 @@ class Body extends Component{
      { 
         this.props.changeLoader();
         response.json().then((response)=>{
-            console.log(response);
+            let message="";
+            if(response.data)
+            {
+                message=response.data[0].msg
+            }
+            else{
+                message=response.message
+            }
+            Swal.fire({
+                html:
+                    '<div style = "color:black;background:white ; box-shadow:2px 2px 10px black; padding: 10px 10px  ">'+message+'</div> ',
+                   showConfirmButton: false,
+                     background:"transparent",
+                  timer:5000,
+           })
             localStorage.setItem("token",response.token);
+            if(!response.data)
+            {
             this.props.history.replace('/otp');
+            }
+            
         })
      })
     }

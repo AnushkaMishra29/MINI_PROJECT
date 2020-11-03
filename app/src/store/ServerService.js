@@ -45,4 +45,4 @@ const Otp=(otp)=>
     };
     return fetch(base_url+'/otpVerification', requestOptions)
 }
-export {CONTACT_US,Signup,getOrginization,Otp}
+export {CONTACT_US,Signup,getOrginization,Otp,login}
