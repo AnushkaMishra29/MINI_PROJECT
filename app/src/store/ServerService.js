@@ -20,6 +20,15 @@ const Signup=(name,email,password)=>
     };
       return fetch(base_url+'/signup', requestOptions)
 }
+const login=(email,password)=>
+{
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:JSON.stringify({email,password})
+    };
+      return fetch(base_url+'/login', requestOptions)
+}
 const getOrginization=()=>
 {
     const requestOptions = {
