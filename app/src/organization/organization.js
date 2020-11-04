@@ -1,24 +1,27 @@
 import React,{Component, component} from 'react'
-import Pagination from 'react-bootstrap/Pagination'
+import {storage} from '../firebase/index'
 class Orginization extends Component{
-     
-    formdata=new FormData();
+    image="";
     inputchangheHandler=(event)=>
     {
-        this.formdata.append('image',event.target.files[0])
-        console.log(event.target.files[0])
+        this.image=event.target.files[0]
+        
     }
     submit()
-    {   
-        const requestOptions = {
-            method: 'POST',
-            body: this.formdata
-        };
-           fetch('http://localhost:8080/orginization', requestOptions)
-           .then(()=>
-           {
-               console.log('send')
-           })
+    {   console.log(this.image)
+        const upload=storage.ref('images/'+this.image.name).put(this.image);
+        upload.on(
+            "state_changed",
+            snapshot=>{},
+            error =>
+            {
+                console.log(error);
+            },
+            ()=>
+            {
+                storage.ref("images").child(this.image.name).getDownloadURL().then(url=>console.log(url))
+            }
+        )
     }
     render()
     {
