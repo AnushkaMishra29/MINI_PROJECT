@@ -22,6 +22,7 @@ const Signup=(name,email,password)=>
 }
 const login=(email,password)=>
 {
+    console.log(JSON.stringify({email,password}));
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -45,4 +46,11 @@ const Otp=(otp)=>
     };
     return fetch(base_url+'/otpVerification', requestOptions)
 }
-export {CONTACT_US,Signup,getOrginization,Otp,login}
+const paytm=()=>
+{
+    const requestOptions = {
+        method: 'GET',
+    };
+      return fetch(base_url+'/paytm', requestOptions)
+}
+export {CONTACT_US,Signup,getOrginization,Otp,login,paytm}

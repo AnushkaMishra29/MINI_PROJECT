@@ -21,7 +21,7 @@ const organizationSchema = new Schema({
     Email_verified:
     {
         type:Boolean,
-        default:false
+        default:false,
 
     },
     image:
@@ -29,17 +29,37 @@ const organizationSchema = new Schema({
         type:String,
         required:true
     },    
-    location:
-    {
-        type:String,
-        required:true
-    },
     address:
     {
         type:String,
         required:true
     },
     location:
+    {
+        type:String,
+        required:true
+    },
+    head_image:
+    {
+        type:String,
+        required:true,
+    },
+    head_name:
+    {
+        type:String,
+        required:true,
+    },
+    contact_number:
+    {
+        type:String,
+        required:true,
+    },
+    password:
+    {
+        type:String,
+        required:true
+    },
+    description:
     {
         type:String,
         required:true

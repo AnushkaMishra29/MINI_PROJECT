@@ -53,7 +53,7 @@ class otp extends Component {
   render() {
     return (
         <div className="otp">
-            <div className="bckgrnd"></div>
+            <div className="bckgrnd">
             <div>
                 <input
                 type="text"
@@ -67,6 +67,7 @@ class otp extends Component {
                     Submit
                 </button>
                 <hr />
+            </div>
             </div>
         </div>
           

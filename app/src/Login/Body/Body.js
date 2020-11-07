@@ -73,11 +73,12 @@ class Body extends Component{
     this.setState({orderForm:UpdatedForm})
    }
    submit=(event)=>
-   {
-     this.props.changeLoader()
-     login(this.state.orderform.email,this.state.orderForm.password)
-    event.preventDefault();
-      
+   { event.preventDefault();
+      login(this.state.orderForm.email.value,this.state.orderForm.password.value)
+      .then((response)=>
+      {
+          console.log(response.json())
+      })
    }
     render()
     {   let Array=[];
