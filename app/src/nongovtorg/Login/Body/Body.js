@@ -1,4 +1,5 @@
 import React,{Component, component} from 'react'
+import {login} from '../../store/ServerService'
 import './Body.css'
 class Body extends Component{
     state={
@@ -74,9 +75,13 @@ class Body extends Component{
    submit=(event)=>
    {
      this.props.changeLoader()
-    event.preventDefault();
-      
-   }
+     event.preventDefault();
+     login(this.state.orederForm.email.value,this.state.orderForm.password.value)
+     .then((response)=>
+     {
+         console.log(response.json())
+     })
+    }
     render()
     {   let Array=[];
         

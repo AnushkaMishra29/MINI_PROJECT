@@ -53,21 +53,26 @@ class otp extends Component {
   render() {
     return (
         <div className="otp">
-            <div className="bckgrnd"></div>
-            <div>
+            <div className="bckgrnd">
+              <div className='head'>Enter OTP</div>
+              <div>
                 <input
-                type="text"
-                name="otp"
-                placeholder="enter otp"
-                onChange={this.onchange}
+                  type="text"
+                  name="otp"
+                  placeholder="Enter the digits"
+                  onChange={this.onchange}
                 />
-            
                 <br />
-                <button type="submit" onClick={event => this.performVerify(event)}>
-                    Submit
+                <button className="btn-4" type="submit" onClick={event => this.performVerify(event)}>
+                  Submit
                 </button>
                 <hr />
+
+              </div>
+
             </div>
+              
+            
         </div>
           
     );
