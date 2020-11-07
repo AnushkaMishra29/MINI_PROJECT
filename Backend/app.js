@@ -36,7 +36,7 @@ const contactUs=require('./routes/contact-us')
 const auth=require('./routes/auth')
 const otp=require('./routes/otp-varification')
 const organization=require('./routes/organization/add_orginization')
-
+const paytm =require('./routes/paytm')
 app.use(helmet());
 app.use(compression());
 app.use((req, res, next) => {
@@ -55,7 +55,7 @@ app.use(contactUs);
 app.use(auth);
 app.use(otp);
 app.use(organization);
-
+app.use(paytm)
 app.use((error,req,res,next)=>{
     const status = error.statusCode || 500;
     const message = error.message;

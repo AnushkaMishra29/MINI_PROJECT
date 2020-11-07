@@ -8,7 +8,7 @@ class Orginization extends Component{
         
     }
     submit()
-    {   console.log(this.image)
+    {  
         const upload=storage.ref('images/'+this.image.name).put(this.image);
         upload.on(
             "state_changed",

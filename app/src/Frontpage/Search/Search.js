@@ -37,7 +37,7 @@ class Search extends Component{
                     <Item image="/assets/Donate.png"
                        name="Donate Here"
                        class="Donate"
-                       replace="/government_schools"
+                       replace="/donation"
                       para="
                       Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes,Lorem ipsum, or lipsum as it is sometimes
                       ">

@@ -8,9 +8,9 @@ import orginization from './organization/organization'
 import Government from './governmentSchool/body'
 import Loader from './Loader/loader'
 import otp from './otp/otp'
+import donation from './donation/donation'
 import {BrowserRouter} from 'react-router-dom'
 import {Route,Switch} from 'react-router-dom'
-
 
 
 
@@ -27,6 +27,7 @@ function App() {
        <Route path={'/orginization'} exact component={orginization}></Route>
        <Route path={'/government_schools'} exact component={Government}></Route>
        <Route path={'/otp'} exact component={otp}></Route>
+       <Route path={'/donation'} exact component={donation}></Route>
        </Switch>
      </BrowserRouter>
     </div>

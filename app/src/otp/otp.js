@@ -56,6 +56,7 @@ class otp extends Component {
             <div className="bckgrnd">
               <div className='head'>Enter OTP</div>
               <div>
+
                 <input
                   type="text"
                   name="otp"
@@ -71,8 +72,6 @@ class otp extends Component {
               </div>
 
             </div>
-              
-            
         </div>
           
     );
