@@ -1,6 +1,11 @@
 import React,{Component, component} from 'react'
 import './Body.css'
 import {login} from '../../store/ServerService'
+import { connect } from 'react-redux'
+import { withRouter, Redirect } from "react-router-dom"
+import * as actionTypes from '../../store/action'
+import Swal from 'sweetalert2';
+
 class Body extends Component{
     state={
         orderForm:{ 
@@ -74,10 +79,33 @@ class Body extends Component{
    }
    submit=(event)=>
    { event.preventDefault();
+      this.props.changeLoader()
       login(this.state.orderForm.email.value,this.state.orderForm.password.value)
       .then((response)=>
       {
-          console.log(response.json())
+          response.json().then((response)=>
+         { this.props.changeLoader()
+            if(response.message)
+            {   let message=response.message
+                if(response.message==="Please Verify Yourself First")
+                {
+                    this.props.history.replace('/otp');
+                   
+                }
+                Swal.fire({
+                    html:
+                        '<div style = "color:black;background:white ; box-shadow:2px 2px 10px black; padding: 10px 10px  ">'+message+'</div> ',
+                       showConfirmButton: false,
+                         background:"transparent",
+                      timer:5000,
+               })
+            }
+            else{
+                localStorage.setItem("token",response.token);
+                this.props.history.replace('/')
+            }
+         }
+          )
       })
    }
     render()
@@ -147,4 +175,14 @@ class Body extends Component{
         )
     }
 }
-export default Body
+const mapStateToProps=state=>{
+    return {
+        ctr:state.loader   
+    }
+}
+const mapDispatchToProps=dispatch=>{
+    return{
+        changeLoader:()=>dispatch({type:actionTypes.CHANGE_LOADER}),
+    };
+}
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Body))

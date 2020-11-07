@@ -2,6 +2,7 @@
 {
     width: 100vw;
 }
+
 .app button{
     position: absolute;
     left:90vw;
@@ -48,10 +49,6 @@
     .app img{
         height: 40px
      }
-    .app .logo
-    {
-      
-    }
     
     
 }
