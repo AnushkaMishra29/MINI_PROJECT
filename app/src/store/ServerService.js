@@ -1,6 +1,6 @@
 
-// const base_url="https://backendeducationportal.herokuapp.com";
-const base_url="http://localhost:8080";
+const base_url="https://backendeducationportal.herokuapp.com";
+// const base_url="http://localhost:8080";
 
 const CONTACT_US=(name,email,query)=>
 {    
